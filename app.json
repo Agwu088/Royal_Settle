@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "Royal_Settle",
+    "slug": "Royal_Settle",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/logomark.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/logomark.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#240046"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.royalsettle.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/logomark.png",
+        "backgroundColor": "#240046"
+      },
+      "edgeToEdgeEnabled": true,
+      "package": "com.royalsettle.app"
+    },
+    "web": {
+      "favicon": "./assets/images/logomark.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store"
+    ]
+  }
+}
