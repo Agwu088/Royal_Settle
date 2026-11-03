@@ -1,6 +1,6 @@
 import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { useState } from 'react';
-import AccountSettings from '@/components/AccountSettings';
+import AccountSettings from '@/app/pages/AccountSettings';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons, MaterialIcons, MaterialCommunityIcons, FontAwesome, Feather } from '@expo/vector-icons';
 import Edit from "@/assets/images/edit.svg";

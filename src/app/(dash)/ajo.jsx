@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { CommunityCard } from '@/components/communityCard';
-import { ActiveTab } from '@/components/ActiveTab';
+import { ActiveTab } from '@/app/pages/ActiveTab';
 import { PendingTab } from '@/components/PendingTab';
-import { CompletedTab } from '@/components/CompletedTab';
+import { CompletedTab } from '@/app/pages/CompletedTab';
 
 const Ajo = () => {
     const [activeTab, setActiveTab] = useState('All');
