@@ -2,6 +2,11 @@ import { Ionicons, Feather, Fontisto, Foundation, Octicons } from "@expo/vector-
 import { Tabs } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { Platform, View, Text } from 'react-native';
+import Home from "@/assets/images/tab/home.svg";
+import Profile from "@/assets/images/tab/profile.svg";
+import Graph from "@/assets/images/tab/graph.svg";
+import Wallet from "@/assets/images/tab/wallet.svg";
+import Setting from "@/assets/images/tab/setting.svg";
 
 
 const DashLayout = () => {
@@ -49,11 +54,7 @@ const DashLayout = () => {
                                 className={`flex-row items-center w-[80px] justify-center h-10 px-4 rounded-full
                                 ${focused ? "bg-[#2B0A52]" : "bg-transparent"}`}
                             >
-                                <Feather
-                                    name="home"
-                                    size={25}
-                                    color={focused ? "#FFFFFF" : "#7E6A9C"}
-                                />
+                                <Home width={25} height={25} />
 
                                 {focused && (
                                     <Text className="text-white font-semibold text-sm ml-2">
@@ -73,11 +74,7 @@ const DashLayout = () => {
                                 className={`flex-row items-center w-[80px] justify-center h-10 px-4 rounded-full
                                 ${focused ? "bg-[#2B0A52]" : "bg-transparent"}`}
                             >
-                                <Fontisto
-                                    name="persons"
-                                    size={25}
-                                    color={focused ? "#FFFFFF" : "#7E6A9C"}
-                                />
+                                <Profile width={25} height={25} />
 
                                 {focused && (
                                     <Text className="text-white font-semibold text-sm ml-2">
@@ -97,11 +94,7 @@ const DashLayout = () => {
                                 className={`flex-row items-center w-[80px] justify-center h-10 px-4 rounded-full
                                 ${focused ? "bg-[#2B0A52]" : "bg-transparent"}`}
                             >
-                                <Foundation
-                                    name="graph-pie"
-                                    size={25}
-                                    color={focused ? "#FFFFFF" : "#7E6A9C"}
-                                />
+                                <Graph width={25} height={25} />
 
                                 {focused && (
                                     <Text className="text-white font-semibold text-sm ml-2">
@@ -121,11 +114,7 @@ const DashLayout = () => {
                                 className={`flex-row items-center w-[80px] justify-center h-10 px-4 rounded-full
                                 ${focused ? "bg-[#2B0A52]" : "bg-transparent"}`}
                             >
-                                <Ionicons
-                                    name="wallet"
-                                    size={25}
-                                    color={focused ? "#FFFFFF" : "#7E6A9C"}
-                                />
+                                <Wallet width={25} height={25} />
 
                                 {focused && (
                                     <Text className="text-white font-semibold text-sm ml-2">
@@ -142,17 +131,13 @@ const DashLayout = () => {
                     options={{
                         tabBarIcon: ({ focused }) => (
                             <View
-                                className={`flex-row items-center w-[80px] justify-center h-10 px-4 rounded-full
+                                className={`flex-row items-center w-[80px] justify-center h-10 rounded-full
                                 ${focused ? "bg-[#2B0A52]" : "bg-transparent"}`}
                             >
-                                <Octicons
-                                    name="gear"
-                                    size={25}
-                                    color={focused ? "#FFFFFF" : "#7E6A9C"}
-                                />
+                                <Setting width={32} height={32} />
 
                                 {focused && (
-                                    <Text className="text-white font-semibold text-sm ml-2">
+                                    <Text className="text-white font-semibold text-sm">
                                         Settings
                                     </Text>
                                 )}
