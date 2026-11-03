@@ -4,11 +4,11 @@
     "slug": "Royal_Settle",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/logomark.png",
+    "icon": "./src/assets/images/logomark.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/images/logomark.png",
+      "image": "./src/assets/images/logomark.png",
       "resizeMode": "contain",
       "backgroundColor": "#240046"
     },
@@ -18,14 +18,14 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/logomark.png",
+        "foregroundImage": "./src/assets/images/logomark.png",
         "backgroundColor": "#240046"
       },
       "edgeToEdgeEnabled": true,
       "package": "com.royalsettle.app"
     },
     "web": {
-      "favicon": "./assets/images/logomark.png"
+      "favicon": "./src/assets/images/logomark.png"
     },
     "plugins": [
       "expo-router",
