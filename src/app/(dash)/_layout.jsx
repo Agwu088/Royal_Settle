@@ -134,7 +134,7 @@ const DashLayout = () => {
                                 className={`flex-row items-center w-[80px] justify-center h-10 rounded-full
                                 ${focused ? "bg-[#2B0A52]" : "bg-transparent"}`}
                             >
-                                <Setting width={32} height={32} />
+                                <Setting width={35} height={35} />
 
                                 {focused && (
                                     <Text className="text-white font-semibold text-sm">

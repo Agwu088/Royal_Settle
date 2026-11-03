@@ -18,6 +18,7 @@ import Group from "@/assets/images/group.svg";
 import Pie from "@/assets/images/pie.svg";
 import Arrow from "@/assets/images/arrow.svg";
 import Transactions from '@/components/wallet/Transactions';
+import Profile from "@/assets/images/profile.svg";
 
 const Dashboard = () => {
     const router = useRouter();
@@ -116,10 +117,8 @@ const Dashboard = () => {
     const renderHeader = () => (
         <View>
             <View className="flex-row items-center justify-between mt-[3%] pb-[5%] border-b border-[#ECECEC]">
-                <View className="flex-row items-center justify-between">
-                    <View className="bg-[#F4F4FB] border-2 border-[#ECECEC] p-[3%] rounded-[50px]">
-                        <Ionicons name="person-sharp" size={40} color="black" />
-                    </View>
+                <View className="flex-row items-center justify-between gap-3">
+                    <Profile width={50} height={50} />
                     <Text className="text-[20px] font-inter-medium text-[#000]">Hi, { }</Text>
                 </View>
                 <View className="bg-[#F4F4FB] border-2 border-[#ECECEC] p-[3%] rounded-[50px]">
