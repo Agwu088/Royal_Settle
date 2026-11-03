@@ -104,7 +104,7 @@ const Wallet = () => {
     return (
         <SafeAreaView className="flex-1 pt-2" edges={['top']}>
             {/* Header */}
-            <View className="px-[5%]">
+            <View className="px-[3%]">
                 <View className="flex-row items-center justify-between">
                     <TouchableOpacity onPress={() => router.back()} className="w-10 h-10 bg-[#F9F9F9] rounded-full items-center justify-center">
                         <Entypo name="chevron-left" size={24} color="black" />
@@ -115,7 +115,7 @@ const Wallet = () => {
                     </TouchableOpacity>
                 </View>
 
-                <View>
+                <View className="mt-[5%]">
                     {/* Balance Card */}
                     <View className="mb-8">
                         <WallAccess />

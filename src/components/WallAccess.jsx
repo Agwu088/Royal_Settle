@@ -7,7 +7,7 @@ import Copy from "@/assets/images/copy.svg";
 
 export default function WallAccess() {
     return (
-        <View className="flex-row justify-between items-center mt-[6%]">
+        <View className="flex-row justify-between items-center">
             <View className="flex-row justify-center items-center gap-2 bg-[#FFF] border-2 border-[#ECECEC] px-[3%] py-[4px] rounded-[50px]">
                 <Wallet width={30} height={30} />
                 <Text className="text-[12px] font-inter-medium">Wallet Balance</Text>

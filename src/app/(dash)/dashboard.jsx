@@ -112,7 +112,7 @@ const Dashboard = () => {
     ]
 
     const renderHeader = () => (
-        <View>
+        <View className="px-[3%]">
             <View className="flex-row items-center justify-between mt-[3%] pb-[5%] border-b border-[#ECECEC]">
                 <View className="flex-row items-center justify-between gap-3">
                     <Profile width={50} height={50} />
@@ -147,11 +147,11 @@ const Dashboard = () => {
                 <Text className="bg-[#DCFCE7] text-[#016630] h-8 text-center w-[15%] rounded-[50] text-[12px] py-2 font-[500] font-inter text-[#000]">Active</Text>
             </View>
             <View className="flex-row justify-between items-center mt-[7%]">
-                <View className="flex-row items-center gap-3 border border-[#ECECEC] w-[48%] p-[3%] rounded-[50px]">
+                <View className="flex-row items-center bg-[#ffffff] gap-3 border border-[#ECECEC] w-[48%] p-[3%] rounded-[50px]">
                     <Add width={30} height={30} />
                     <Text className="text-[14px] font-poppins">Fund wallet</Text>
                 </View>
-                <View className="flex-row items-center gap-3 border border-[#ECECEC] w-[48%] p-[3%] rounded-[50px]">
+                <View className="flex-row items-center bg-[#ffffff] gap-3 border border-[#ECECEC] w-[48%] p-[3%] rounded-[50px]">
                     <Minus width={30} height={30} />
                     <Text className="text-[14px] font-poppins">Withdraw</Text>
                 </View>
@@ -162,8 +162,8 @@ const Dashboard = () => {
                         <People width={30} height={30} />
                         <Text className="text-[16px] font-familjen-semibold">Community Ajo(s)</Text>
                     </View>
-                    <View className="bg-[#FFF] border border-[#ECECEC] p-[4%] rounded-[50px]">
-                        <Arrow width={18} height={18} />
+                    <View className="bg-[#FFF] border border-[#ECECEC] p-[3%] rounded-[50px]">
+                        <Arrow width={17} height={17} />
                     </View>
                 </View>
                 <View className="mt-4">
@@ -177,7 +177,7 @@ const Dashboard = () => {
                         contentContainerStyle={{ gap: 16, paddingRight: 20 }}
                         keyExtractor={item => item.id.toString()}
                         renderItem={({ item }) => (
-                            <View className="border-2 border-[#ECECEC] rounded-[30px] p-4 w-[280px]">
+                            <View className="border-2 border-[#ECECEC] bg-white rounded-[30px] p-4 w-[280px]">
                                 <View className="flex-row items-center justify-between mb-4">
                                     <View>
                                         <View className="flex-row items-center gap-2 mb-2">
@@ -229,9 +229,9 @@ const Dashboard = () => {
                         )}
                     />
                 </View>
-                <View className="mt-[10%] gap-6">
+                <View className="mt-[5%] gap-3">
                     {/* Private Ajo Section */}
-                    <View className="border-2 border-[#ECECEC] rounded-[30px] p-[5%]">
+                    <View className="bg-[white] border-2 border-[#ECECEC] rounded-[30px] p-[5%]">
                         <Text className="text-[16px] font-familjen-semibold mb-4">Private Ajo(s)</Text>
                         <View className="flex-row items-center justify-between">
                             <View className="flex-row items-center gap-3">
@@ -251,7 +251,7 @@ const Dashboard = () => {
                     </View>
 
                     {/* Planned Saving Section */}
-                    <View className="border-2 border-[#ECECEC] rounded-[30px] p-[5%]">
+                    <View className="bg-[white] border-2 border-[#ECECEC] rounded-[30px] p-[5%]">
                         <Text className="text-[16px] font-familjen-semibold mb-4">Planned saving(s)</Text>
                         <View className="flex-row items-center justify-between">
                             <View className="flex-row items-center gap-3">
@@ -270,29 +270,31 @@ const Dashboard = () => {
                         </View>
                     </View>
                 </View>
-                <View className="mt-[10%] mb-6">
-                    <View className="flex-row justify-between items-center">
-                        <View>
-                            <Text className="text-[16px] font-familjen-semibold text-[#000]">Today Transaction</Text>
-                            <Text className="text-[12px] text-[#666] font-inter-medium mt-2">{data.length} transaction today</Text>
-                        </View>
-                        <View className="bg-[#FFF] border border-[#ECECEC] p-[4%] rounded-[50px]">
-                            <Arrow width={18} height={18} />
-                        </View>
-                    </View>
-                </View>
             </View>
         </View>
     );
 
     return (
-        <SafeAreaView className="flex-1 bg-white p-[20%]">
+        <SafeAreaView className="flex-1" edges={['top']}>
             <FlatList
                 ListHeaderComponent={renderHeader}
-                contentContainerStyle={{ paddingBottom: 65 }}
+                // contentContainerStyle={{ paddingBottom: 65 }}
                 showsVerticalScrollIndicator={false}
                 ListFooterComponent={
-                    <Transactions transactions={data} />
+                    <View className="mt-[5%] px-[3%] pt-[10px] bg-white rounded-t-[20px]">
+                        <View className="flex-row justify-between items-center mb-5">
+                            <View>
+                                <Text className="text-[16px] font-familjen-semibold text-[#000]">Today Transaction</Text>
+                                <Text className="text-[12px] text-[#666] font-inter-medium mt-2">{data.length} transaction today</Text>
+                            </View>
+                            <View className="bg-[#FFF] border border-[#ECECEC] p-[4%] rounded-[50px]">
+                                <Arrow width={18} height={18} />
+                            </View>
+                        </View>
+                        <View className="mb-[25%]">
+                            <Transactions transactions={data} />
+                        </View>
+                    </View>
                 }
             />
         </SafeAreaView>
