@@ -2,7 +2,8 @@ import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons, FontAwesome, Entypo, MaterialIcons, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import Transactions from '@/components/wallet/Transactions';
+import Transactions from '@/components/Transactions';
+import WallAccess from '@/components/WallAccess';
 
 const Wallet = () => {
     const router = useRouter();
@@ -101,10 +102,10 @@ const Wallet = () => {
     ]
 
     return (
-        <SafeAreaView className="flex-1 bg-white">
-            <View className="flex-1 px-[5%] pt-2">
-                {/* Header */}
-                <View className="flex-row items-center justify-between mb-6">
+        <SafeAreaView className="flex-1 pt-2" edges={['top']}>
+            {/* Header */}
+            <View className="px-[5%]">
+                <View className="flex-row items-center justify-between">
                     <TouchableOpacity onPress={() => router.back()} className="w-10 h-10 bg-[#F9F9F9] rounded-full items-center justify-center">
                         <Entypo name="chevron-left" size={24} color="black" />
                     </TouchableOpacity>
@@ -117,19 +118,9 @@ const Wallet = () => {
                 <View>
                     {/* Balance Card */}
                     <View className="mb-8">
-                        <View className="flex-row items-center justify-between mb-4">
-                            <View className="flex-row items-center gap-2 bg-[#F9F9F9] px-3 py-1.5 rounded-[20px]">
-                                <Ionicons name="wallet" size={16} color="#666" />
-                                <Text className="text-[12px] text-[#000] font-inter-medium">Wallet Balance</Text>
-                            </View>
-                            <View className="flex-row gap-4 bg-[#F9F9F9] px-3 py-2 rounded-[20px]">
-                                <Entypo name="eye" size={16} color="#666" />
-                                <MaterialIcons name="lock" size={16} color="#666" />
-                                <Ionicons name="copy" size={16} color="#666" />
-                            </View>
-                        </View>
+                        <WallAccess />
 
-                        <View className="flex-row items-start gap-2">
+                        <View className="flex-row items-start gap-2 mt-5">
                             <View className="flex-row items-start">
                                 <MaterialCommunityIcons name="currency-ngn" size={30} color="black" style={{ marginTop: 8 }} />
                                 <Text className="text-[44px] font-familjen-semibold text-[#000] leading-tight">120,432.05</Text>
@@ -141,22 +132,22 @@ const Wallet = () => {
                     </View>
 
                     {/* Action Buttons */}
-                    <View className="flex-row justify-between mb-10">
+                    <View className="flex-row justify-between mb-7">
                         <View className="items-center gap-2">
-                            <TouchableOpacity className="w-16 h-16 rounded-full bg-white border-2 border-[#F9F9F9] items-center justify-center">
+                            <TouchableOpacity className="w-20 h-20 rounded-full bg-white items-center justify-center">
                                 <Entypo name="plus" size={24} color="#292D32" />
                             </TouchableOpacity>
                             <Text className="text-[14px] text-[#000] font-inter-medium">Fund</Text>
                         </View>
                         <View className="items-center gap-2">
-                            <TouchableOpacity className="w-16 h-16 rounded-full bg-white border-2 border-[#F9F9F9] items-center justify-center">
+                            <TouchableOpacity className="w-20 h-20 rounded-full bg-white border-2 border-[#F9F9F9] items-center justify-center">
                                 <Entypo name="minus" size={24} color="#292D32" />
                             </TouchableOpacity>
                             <Text className="text-[14px] text-[#000] font-inter-medium">Withdraw</Text>
                         </View>
                         <View className="items-center gap-2">
                             <TouchableOpacity
-                                className="w-16 h-16 rounded-full bg-white border-2 border-[#F9F9F9] items-center justify-center"
+                                className="w-20 h-20 rounded-full bg-white border-2 border-[#F9F9F9] items-center justify-center"
                                 onPress={() => router.push("pages/statistics")}
                             >
                                 <Ionicons name="bar-chart-outline" size={24} color="#292D32" />
@@ -164,22 +155,25 @@ const Wallet = () => {
                             <Text className="text-[14px] text-[#000] font-inter-medium">Stats</Text>
                         </View>
                         <View className="items-center gap-2">
-                            <TouchableOpacity className="w-16 h-16 rounded-full bg-white border-2 border-[#F9F9F9] items-center justify-center">
+                            <TouchableOpacity className="w-20 h-20 rounded-full bg-white border-2 border-[#F9F9F9] items-center justify-center">
                                 <Ionicons name="settings-outline" size={24} color="#292D32" />
                             </TouchableOpacity>
                             <Text className="text-[14px] text-[#000] font-inter-medium">Setting</Text>
                         </View>
                     </View>
 
-                    {/* Today Transaction */}
-                    <View className="flex-row justify-between items-center mb-6">
-                        <View>
-                            <Text className="text-[16px] font-familjen-semibold text-[#000]">Today Transaction</Text>
-                            <Text className="text-[11px] text-[#666] font-inter-medium">13 transaction today</Text>
-                        </View>
-                        <View className="bg-[#FFF] border-2 border-[#ECECEC] p-[3%] rounded-[50px]">
-                            <Feather name="arrow-up-right" size={24} color="black" />
-                        </View>
+                </View>
+            </View>
+
+            {/* Today Transaction */}
+            <View className="bg-[white] px-[5%] pt-[10px] rounded-t-[20px] flex-1">
+                <View className="flex-row justify-between items-center mb-6">
+                    <View>
+                        <Text className="text-[16px] font-familjen-semibold text-[#000]">Today Transaction</Text>
+                        <Text className="text-[11px] text-[#666] font-inter-medium">13 transaction today</Text>
+                    </View>
+                    <View className="bg-[#FFF] border-2 border-[#ECECEC] p-[3%] rounded-[50px]">
+                        <Feather name="arrow-up-right" size={24} color="black" />
                     </View>
                 </View>
                 <Transactions transactions={data} />

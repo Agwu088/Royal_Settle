@@ -6,10 +6,6 @@ import { getAllAjo } from '@/store/slices/ajoSlice';
 import { useRouter } from 'expo-router';
 import { useDispatch, useSelector } from 'react-redux';
 import Bell from "@/assets/images/notification.svg";
-import Wallet from "@/assets/images/wallet.svg";
-import Eye from "@/assets/images/eye.svg";
-import Lock from "@/assets/images/lock.svg";
-import Copy from "@/assets/images/copy.svg";
 import Add from "@/assets/images/add.svg";
 import Minus from "@/assets/images/minus.svg";
 import People from "@/assets/images/people.svg";
@@ -17,8 +13,9 @@ import Logo from "@/assets/images/slogo.svg";
 import Group from "@/assets/images/group.svg";
 import Pie from "@/assets/images/pie.svg";
 import Arrow from "@/assets/images/arrow.svg";
-import Transactions from '@/components/wallet/Transactions';
+import Transactions from '@/components/Transactions';
 import Profile from "@/assets/images/profile.svg";
+import WallAccess from '@/components/WallAccess';
 
 const Dashboard = () => {
     const router = useRouter();
@@ -142,17 +139,8 @@ const Dashboard = () => {
                     <Text className="text-[12px] font-[500] font-inter text-[#240046]">Upgrade</Text>
                 </TouchableOpacity>
             </View> */}
-            <View className="flex-row justify-between items-center mt-[6%]">
-                <View className="flex-row justify-center items-center gap-2 bg-[#FFF] border-2 border-[#ECECEC] px-[3%] py-[4px] rounded-[50px]">
-                    <Wallet width={30} height={30} />
-                    <Text className="text-[12px] font-inter-medium">Wallet Balance</Text>
-                </View>
-                <View className="flex-row justify-center items-center gap-3 bg-[#FFF] border-2 border-[#ECECEC] px-[3%] py-[4px] rounded-[50px]">
-                    <Eye width={30} height={30} />
-                    <Lock width={30} height={30} />
-                    <Copy width={30} height={30} />
-                </View>
-            </View>
+
+            <WallAccess />
             <View className="mt-[5%] flex-row items-top">
                 <MaterialCommunityIcons name="currency-ngn" size={35} color="black" />
                 <Text className="text-[44px] font-familjen-semibold leading-tight text-[#000] mr-2">120,432.05</Text>
