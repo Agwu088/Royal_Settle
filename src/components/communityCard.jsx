@@ -1,6 +1,6 @@
 import { Feather, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
-import logo from "@/assets/images/logo.png"
+import Slogo from "@/assets/images/slogo.svg"
 
 export const CommunityCard = ({ title, amount, goal, cycles, frequency, slots, filled, total, id }) => {
     return (
@@ -12,24 +12,24 @@ export const CommunityCard = ({ title, amount, goal, cycles, frequency, slots, f
                     </View>
                     <View>
                         <View className="flex-row items-center gap-2 mb-1">
-                            <Text className="text-[16px] font-[600] text-[#000] leading-tight">{title}</Text>
-                            <Text className="text-[12px] text-[#666]">with 28 others</Text>
+                            <Text className="text-[14px] font-familjen-semibold text-[#000] leading-tight">{title}</Text>
+                            <Text className="text-[12px] font-familjen text-[#666] ">with 28 others</Text>
                         </View>
                         <View className="flex-row items-center gap-2 mb-2">
-                            <Text className="text-[16px] font-bold text-[#000] font-poppins-medium">₦{amount}</Text>
-                            <Entypo name="arrow-right" size={14} color="#666" />
-                            <Text className="text-[16px] font-bold text-[#000] font-poppins-medium">₦{goal}</Text>
+                            <Text className="text-[14px] text-[#000] font-poppins-medium">₦{amount}</Text>
+                            <Entypo name="arrow-right" size={12} color="#666" />
+                            <Text className="text-[14px] text-[#000] font-poppins-medium">₦{goal}</Text>
                         </View>
                         <View className="flex-row gap-2 flex-wrap">
-                            <Text className="border border-[#ECECEC] rounded-[20px] px-3 py-1 text-[11px] text-[#666]">{cycles} Cycles</Text>
-                            <Text className="border border-[#ECECEC] rounded-[20px] px-3 py-1 text-[11px] text-[#666]">{frequency}</Text>
-                            <Text className="border border-[#ECECEC] rounded-[20px] px-3 py-1 text-[11px] text-[#666]">{slots} more slots</Text>
+                            <Text className="border border-[#ECECEC] font-familjen rounded-[20px] px-3 py-1 text-[12px] text-[#666]">{cycles} Cycles</Text>
+                            <Text className="border border-[#ECECEC] font-familjen rounded-[20px] px-3 py-1 text-[12px] text-[#666]">{frequency}</Text>
+                            <Text className="border border-[#ECECEC] font-familjen rounded-[20px] px-3 py-1 text-[12px] text-[#666]">{slots} more slots</Text>
                         </View>
                     </View>
                 </View>
                 <View className="relative">
                     <View className="w-8 h-8 rounded-full bg-[#F4F4FB] items-center justify-center">
-                        <Image source={logo} className="w-full h-full" />
+                        <Slogo width={30} height={30} />
                     </View>
                     <View className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#00C853] rounded-full border border-white" />
                 </View>

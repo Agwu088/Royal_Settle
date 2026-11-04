@@ -69,7 +69,7 @@ const Ajo = () => {
         if (item.type === 'header') {
             return (
                 <View className="px-[5%] mb-4 mt-4">
-                    <Text className="text-[12px] font-[500] text-[#000]">{item.title}</Text>
+                    <Text className="text-[12px] font-inter-medium text-[#000]">{item.title}</Text>
                 </View>
             );
         }
@@ -101,7 +101,7 @@ const Ajo = () => {
                             onPress={() => setActiveTab(tab)}
                             className={`flex-1 py-2 rounded-[16px] items-center justify-center ${activeTab === tab ? 'bg-white shadow-sm' : ''}`}
                         >
-                            <Text className={`text-[14px] font-[500] ${activeTab === tab ? 'text-[#240046]' : 'text-[#8E8E93]'}`}>
+                            <Text className={`text-[14px] font-familjen-semibold ${activeTab === tab ? 'text-[#240046]' : 'text-[#8E8E93]'}`}>
                                 {tab}
                             </Text>
                         </TouchableOpacity>
@@ -113,12 +113,12 @@ const Ajo = () => {
             {activeTab === 'All' && (
                 <View className="px-[5%] mb-4 flex-row items-center justify-between">
                     <View className="w-[65%]">
-                        <Text className="text-[16px] font-[600] text-[#000] mb-1">Join any Ajo of your choice</Text>
-                        <Text className="text-[11px] text-[#666]">Join and explore an already created ajo</Text>
+                        <Text className="text-[16px] font-familjen-semibold text-[#000] mb-1">Join any Ajo of your choice</Text>
+                        <Text className="text-[11px] text-[#666] font-inter-medium">Join and explore an already created ajo</Text>
                     </View>
                     <TouchableOpacity className="flex-row items-center bg-[#EBEBF0] px-4 py-2 rounded-[20px] gap-2">
                         <Ionicons name="search" size={18} color="#240046" />
-                        <Text className="text-[#240046] text-[12px] font-poppins-bold font-[600]">Search</Text>
+                        <Text className="text-[#240046] text-[12px] font-poppins-bold">Search</Text>
                     </TouchableOpacity>
                 </View>
             )}
@@ -145,7 +145,7 @@ const Ajo = () => {
             <View className="flex-1">
                 {/* Header */}
                 <View className="px-[5%] pt-2 pb-6">
-                    <Text className="text-[24px] font-[600] text-center text-[#000]">
+                    <Text className="text-[24px] font-familjen-medium text-center text-[#000]">
                         {activeTab === 'All' ? 'Community Ajo(s)' : `${activeTab} Ajo(s)`}
                     </Text>
                 </View>
