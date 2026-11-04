@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -66,32 +66,6 @@ const Ajo = () => {
         },
     ];
 
-    const renderItem = ({ item }) => {
-        if (item.type === 'header') {
-            return (
-                <View className="px-[5%] mb-4 mt-4">
-                    <Text className="text-[12px] font-inter-medium text-[#000]">{item.title}</Text>
-                </View>
-            );
-        }
-
-        return (
-            <View className="px-[5%] mb-4">
-                <CommunityCard
-                    title={item.title}
-                    amount={item.amount}
-                    goal={item.goal}
-                    cycles={item.cycles}
-                    frequency={item.frequency}
-                    slots={item.slots}
-                    filled={item.filled}
-                    total={item.total}
-                    id={item.id}
-                />
-            </View>
-        );
-    };
-
     const ListHeader = () => (
         <>
             <View className="px-[5%] mb-8">
@@ -126,9 +100,35 @@ const Ajo = () => {
         </>
     );
 
+    const renderItem = ({ item }) => {
+        if (item.type === 'header') {
+            return (
+                <View className="px-[5%] mb-4 mt-4">
+                    <Text className="text-[12px] font-inter-medium text-[#000]">{item.title}</Text>
+                </View>
+            );
+        }
+
+        return (
+            <View className="px-[5%] mb-4">
+                <CommunityCard
+                    title={item.title}
+                    amount={item.amount}
+                    goal={item.goal}
+                    cycles={item.cycles}
+                    frequency={item.frequency}
+                    slots={item.slots}
+                    filled={item.filled}
+                    total={item.total}
+                    id={item.id}
+                />
+            </View>
+        );
+    };
+
     const ListFooter = () => {
         if (activeTab === 'Active') {
-            return <ActiveTab />;
+            return <ActiveTab sections={sections} />;
         }
         if (activeTab === 'Pending') {
             return <PendingTab />;
@@ -153,8 +153,8 @@ const Ajo = () => {
 
                 <Ajos
                     data={dataToRender}
-                    item={renderItem}
                     listHeader={ListHeader}
+                    item={renderItem}
                     listFooter={ListFooter}
                 />
             </View>
