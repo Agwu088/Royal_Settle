@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { View } from 'react-native';
 import { router } from 'expo-router';
 import NotActive from '@/components/NotActive';
@@ -5,8 +6,9 @@ import People from "@/assets/images/ajoImg.svg";
 import Add from "@/assets/images/add-circle.svg";
 
 
-
 export const ActiveTab = () => {
+
+    const [isLoading, setIsLoading] = useState(false);
 
 
     const createAjo = () => {
@@ -15,6 +17,9 @@ export const ActiveTab = () => {
 
     return (
         <View>
+            {
+
+            }
             <NotActive
                 create={createAjo}
                 title={"Create an Ajo"}

@@ -6,6 +6,7 @@ import { CommunityCard } from '@/components/communityCard';
 import { ActiveTab } from '@/app/pages/ActiveTab';
 import { PendingTab } from '@/components/PendingTab';
 import { CompletedTab } from '@/app/pages/CompletedTab';
+import Ajos from '@/components/Ajos';
 
 const Ajo = () => {
     const [activeTab, setActiveTab] = useState('All');
@@ -150,14 +151,11 @@ const Ajo = () => {
                     </Text>
                 </View>
 
-                <FlatList
+                <Ajos
                     data={dataToRender}
-                    renderItem={renderItem}
-                    keyExtractor={(item, index) => item.id ? item.id.toString() : `header-${index}`}
-                    ListHeaderComponent={ListHeader}
-                    ListFooterComponent={ListFooter}
-                    showsVerticalScrollIndicator={false}
-                    contentContainerStyle={{ paddingBottom: 100 }}
+                    item={renderItem}
+                    listHeader={ListHeader}
+                    listFooter={ListFooter}
                 />
             </View>
         </SafeAreaView>
