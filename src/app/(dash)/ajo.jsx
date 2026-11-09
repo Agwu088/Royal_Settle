@@ -1,5 +1,5 @@
-import { View, Text, TouchableOpacity } from 'react-native';
-import { useState } from 'react';
+import { View, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { CommunityCard } from '@/components/communityCard';
@@ -10,8 +10,17 @@ import Ajos from '@/components/Ajos';
 
 const Ajo = () => {
     const [activeTab, setActiveTab] = useState('All');
+    const [loading, setLoading] = useState(true);
 
     const tabs = ['All', 'Active', 'Pending', 'Completed'];
+
+    useEffect(() => {
+        const loadTime = setTimeout(() => {
+            setLoading(false)
+        }, 1000)
+
+        return () => clearTimeout(loadTime);
+    }, [])
 
     const sections = [
         { type: 'header', title: 'Weekly Community Ajo(s)' },
@@ -66,40 +75,6 @@ const Ajo = () => {
         },
     ];
 
-    const ListHeader = () => (
-        <>
-            <View className="px-[5%] mb-8">
-                <View className="flex-row bg-[#EBEBF0] p-1 rounded-[20px]">
-                    {tabs.map((tab) => (
-                        <TouchableOpacity
-                            key={tab}
-                            onPress={() => setActiveTab(tab)}
-                            className={`flex-1 py-2 rounded-[16px] items-center justify-center ${activeTab === tab ? 'bg-white shadow-sm' : ''}`}
-                        >
-                            <Text className={`text-[14px] font-familjen-semibold ${activeTab === tab ? 'text-[#240046]' : 'text-[#8E8E93]'}`}>
-                                {tab}
-                            </Text>
-                        </TouchableOpacity>
-                    ))}
-                </View>
-            </View>
-
-            {/* Search Section */}
-            {activeTab === 'All' && (
-                <View className="px-[5%] mb-4 flex-row items-center justify-between">
-                    <View className="w-[65%]">
-                        <Text className="text-[16px] font-familjen-semibold text-[#000] mb-1">Join any Ajo of your choice</Text>
-                        <Text className="text-[11px] text-[#666] font-inter-medium">Join and explore an already created ajo</Text>
-                    </View>
-                    <TouchableOpacity className="flex-row items-center bg-[#EBEBF0] px-4 py-2 rounded-[20px] gap-2">
-                        <Ionicons name="search" size={18} color="#240046" />
-                        <Text className="text-[#240046] text-[12px] font-poppins-bold">Search</Text>
-                    </TouchableOpacity>
-                </View>
-            )}
-        </>
-    );
-
     const renderItem = ({ item }) => {
         if (item.type === 'header') {
             return (
@@ -151,12 +126,45 @@ const Ajo = () => {
                     </Text>
                 </View>
 
-                <Ajos
-                    data={dataToRender}
-                    listHeader={ListHeader}
-                    item={renderItem}
-                    listFooter={ListFooter}
-                />
+
+                <View className="px-[5%] mb-8">
+                    <View className="flex-row bg-[#EBEBF0] p-1 rounded-[20px]">
+                        {tabs.map((tab) => (
+                            <TouchableOpacity
+                                key={tab}
+                                onPress={() => setActiveTab(tab)}
+                                className={`flex-1 py-2 rounded-[16px] items-center justify-center ${activeTab === tab ? 'bg-[#F2F3FF] border-2 border-white' : ''}`}
+                            >
+                                <Text className={`text-[14px] font-familjen-semibold ${activeTab === tab ? 'text-[#240046]' : 'text-[#8E8E93]'}`}>
+                                    {tab}
+                                </Text>
+                            </TouchableOpacity>
+                        ))}
+                    </View>
+                </View>
+
+                {/* Search Section */}
+                {activeTab === 'All' && (
+                    <View className="px-[5%] mb-4 flex-row items-center justify-between">
+                        <View className="w-[65%]">
+                            <Text className="text-[16px] font-familjen-semibold text-[#000] mb-1">Join any Ajo of your choice</Text>
+                            <Text className="text-[11px] text-[#666] font-inter-medium">Join and explore an already created ajo</Text>
+                        </View>
+                        <TouchableOpacity className="flex-row items-center bg-[#EBEBF0] px-4 py-2 rounded-[20px] gap-2">
+                            <Ionicons name="search" size={18} color="#240046" />
+                            <Text className="text-[#240046] text-[12px] font-poppins-bold">Search</Text>
+                        </TouchableOpacity>
+                    </View>
+                )}
+
+                {loading ? <ActivityIndicator color="#000000" /> :
+                    <Ajos
+                        data={dataToRender}
+                        item={renderItem}
+                        listFooter={ListFooter}
+                    />
+                }
+
             </View>
         </SafeAreaView>
     )

@@ -208,6 +208,13 @@ const DashLayout = () => {
                         tabBarStyle: { display: 'none' }
                     }}
                 />
+                <Tabs.Screen
+                    name="pages/Notification"
+                    options={{
+                        href: null,
+                        tabBarStyle: { display: 'none' }
+                    }}
+                />
 
             </Tabs>
         </>

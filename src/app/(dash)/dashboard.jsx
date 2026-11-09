@@ -113,19 +113,19 @@ const Dashboard = () => {
 
     const renderHeader = () => (
         <View className="px-[3%]">
-            <View className="flex-row items-center justify-between mt-[3%] pb-[5%] border-b border-[#ECECEC]">
+            <View className="flex-row items-center justify-between mt-[3%] pb-[2%] border-b border-[#ECECEC]">
                 <View className="flex-row items-center justify-between gap-3">
                     <Profile width={50} height={50} />
                     <Text className="text-[20px] font-inter-medium text-[#000]">Hi, { }</Text>
                 </View>
-                <View className="bg-[#F4F4FB] border-2 border-[#ECECEC] p-[3%] rounded-[50px]">
+                <TouchableOpacity onPress={() => router.push('pages/Notification')} className="bg-[#F4F4FB] border-2 border-[#ECECEC] p-[3%] rounded-[50px]">
                     <View className="bg-red-500 rounded-full w-5 h-5 flex items-center justify-center absolute -top-2 right-0">
                         <Text className="text-[10px] text-white font-inter-medium">6</Text>
                     </View>
                     <Bell width={30} height={30} />
-                </View>
+                </TouchableOpacity>
             </View>
-            {/* <View className="flex-row justify-between items-center mt-[8%] bg-[#240046] p-5 rounded-[20px]">
+            <View className="flex-row justify-between items-center bg-[#240046] p-5 rounded-[20px]">
                 <View className="flex-row items-center gap-3">
                     <View className="bg-[#FFF] p-2 rounded-[50px]">
                         <MaterialCommunityIcons name="medal" size={24} color="#240046" />
@@ -138,9 +138,10 @@ const Dashboard = () => {
                 <TouchableOpacity onPress={() => router.push('/kycLevel')} className="flex-row justify-center items-center gap-3 bg-[#DFE2FF] px-[5%] h-10 rounded-[50px]">
                     <Text className="text-[12px] font-[500] font-inter text-[#240046]">Upgrade</Text>
                 </TouchableOpacity>
-            </View> */}
-
-            <WallAccess />
+            </View>
+            <View className="mt-[3%]">
+                <WallAccess />
+            </View>
             <View className="mt-[5%] flex-row items-top">
                 <MaterialCommunityIcons name="currency-ngn" size={35} color="black" />
                 <Text className="text-[44px] font-familjen-semibold leading-tight text-[#000] mr-2">120,432.05</Text>
