@@ -184,7 +184,7 @@ const Ajo = () => {
                                 className={`flex-1 py-2 rounded-[16px] items-center justify-center ${activeTab === tab ? 'bg-[#F2F3FF] border-2 border-white' : ''}`}
                             >
                                 <View>
-                                    {tab === "Pending" && cards.length > 0 && (
+                                    {tab === "Pending" && activeTab === "Pending" && cards.length > 0 && (
                                         <View className="bg-[#F0931B] rounded-full w-5 h-5 flex items-center justify-center absolute -top-5 -right-7">
                                             <Text className="text-[10px] text-white font-inter-medium">{cards.length}</Text>
                                         </View>

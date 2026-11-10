@@ -1,14 +1,13 @@
 import { MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
 import { View, Text, TouchableOpacity } from 'react-native';
+import Gift from "@/assets/images/gift.svg";
 
 export const InvitationCard = ({ name, title, amount, goal, cycles, time, slots, status }) => {
     return (
         <View className="bg-white p-6 rounded-[20px] border border-[#ECECEC]">
             <View className="flex-row mb-4">
-                <View className="flex-row gap-3">
-                    <View className="w-12 h-12 bg-[#F4F4FB] rounded-full items-center justify-center">
-                        <MaterialCommunityIcons name="account-group" size={24} color="#240046" />
-                    </View>
+                <View className="flex-row items-center gap-3">
+                    <Gift width={40} height={40} />
                     <View>
                         <View className="flex-row items-start gap-8">
                             <View className="flex-row items-center gap-2 mb-4">
