@@ -22,9 +22,7 @@ const Unread = ({ notifications }) => {
                             <View className="relative">
                                 <Logo width={35} height={35} />
                                 {/* </View> */}
-                                {item.isUnread && (
-                                    <View className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 rounded-full border-2 border-white" />
-                                )}
+                                <View className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 rounded-full border-2 border-white" />
                             </View>
                             <Text className="ml-3 font-familjen-semibold text-[14px] text-[#141414]">{item.title}</Text>
                         </View>

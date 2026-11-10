@@ -4,7 +4,7 @@ import Slogo from "@/assets/images/slogo.svg"
 
 export const CommunityCard = ({ title, amount, goal, cycles, frequency, slots, filled, total, id }) => {
     return (
-        <View className="bg-white p-4 rounded-[30px] border border-[#ECECEC] shadow-sm">
+        <View className="bg-white p-4 rounded-[30px] border border-[#ECECEC]">
             <View className="flex-row items-start justify-between mb-4">
                 <View className="flex-row gap-3">
                     <View className="w-12 h-12 bg-[#F4F4FB] rounded-full items-center justify-center">

@@ -1,16 +1,13 @@
+import { View, ActivityIndicator, TouchableOpacity, Text } from 'react-native';
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, View, TouchableOpacity, Text } from 'react-native';
-import { router } from 'expo-router';
 import NotActive from '@/components/NotActive';
-import People from "@/assets/images/ajoImg.svg";
+import Gift from "@/assets/images/gift.svg";
 import Add from "@/assets/images/add-circle.svg";
-import Invite from "@/assets/images/invite.svg";
+import Search from "@/assets/images/search.svg";
 import Ajos from '@/components/Ajos';
-import { CommunityCard } from '@/components/communityCard';
+import { InvitationCard } from '@/components/invitationCard';
 
-
-export const ActiveTab = ({ sections }) => {
-
+export const PendingTab = ({ invitationData }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -21,28 +18,24 @@ export const ActiveTab = ({ sections }) => {
         return () => clearTimeout(loadTime);
     }, [])
 
-
     const createAjo = () => {
         router.push("/createAjo");
     }
 
-    const cards = sections.filter(item => item.type === 'card');
-    const card = []
-
+    const cards = invitationData.filter(item => item.status === 'pending');
 
     const renderItem = ({ item }) => {
         return (
             <View className="px-[5%] mb-4">
-                <CommunityCard
+                <InvitationCard
+                    name={item.name}
                     title={item.title}
                     amount={item.amount}
                     goal={item.goal}
                     cycles={item.cycles}
-                    frequency={item.frequency}
+                    time={item.time}
                     slots={item.slots}
-                    filled={item.filled}
-                    total={item.total}
-                    id={item.id}
+                    status={item.status}
                 />
             </View>
         );
@@ -52,14 +45,12 @@ export const ActiveTab = ({ sections }) => {
         <View>
             <View className="px-[5%] flex-row items-center justify-between mb-10">
                 <View>
-                    <Text className="text-[16px] font-familjen-semibold">Invite friends to join your Ajo</Text>
-                    <Text className="font-inter-medium text-[11px] mt-1 text-[#636A67]">Invite friends and grow together.</Text>
+                    <Text className="text-[16px] font-familjen-semibold">Manage your invitations</Text>
+                    <Text className="font-inter-medium text-[11px] mt-1 text-[#636A67]">Accept or decline Ajo requests.</Text>
                 </View>
-                <TouchableOpacity
-                    className="flex-row items-center bg-[#F2F3FF] px-5 py-2 rounded-[24px] gap-2"
-                >
-                    <Invite width={30} height={30} />
-                    <Text className="text-[#240046] text-[12px] font-poppins-semibold">Invite</Text>
+                <TouchableOpacity className="flex-row items-center bg-[#F2F3FF] px-5 py-2 rounded-[24px] gap-2">
+                    <Search width={30} height={30} />
+                    <Text className="text-[#240046] text-[12px] font-poppins-semibold">Search</Text>
                 </TouchableOpacity>
             </View>
 
@@ -73,12 +64,10 @@ export const ActiveTab = ({ sections }) => {
                     :
                     <NotActive
                         create={createAjo}
-                        title={"Create an Ajo"}
-                        subTitle={"Become an admin and invite your friends."}
-                        status={"No active Ajo yet."}
-                        msg={"All your active ajo will appear here"}
+                        status={"No pending Ajo invitation yet."}
+                        msg={"All new ajo invitation yet to be accepted appear here."}
                         btnTitle={"Create Ajo"}
-                        icon={People}
+                        icon={Gift}
                         icon0={Add}
                     />
             }

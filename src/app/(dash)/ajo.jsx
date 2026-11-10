@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { CommunityCard } from '@/components/communityCard';
-import { ActiveTab } from '@/app/pages/ActiveTab';
-import { PendingTab } from '@/components/PendingTab';
-import { CompletedTab } from '@/app/pages/CompletedTab';
+import { ActiveTab } from '@/app/pages/ajo/ActiveTab';
+import { PendingTab } from '@/app/pages/ajo/PendingTab';
+import { CompletedTab } from '@/app/pages/ajo/CompletedTab';
 import Ajos from '@/components/Ajos';
 
 const Ajo = () => {
@@ -75,6 +75,54 @@ const Ajo = () => {
         },
     ];
 
+    const invitationData = [
+        {
+            id: 1,
+            name: "Henny Sam",
+            title: "sent you an Ajo invitation",
+            slots: 4,
+            amount: "50,000",
+            goal: "500,000",
+            cycles: 10,
+            time: "1 min ago",
+            status: "pending"
+        },
+        {
+            id: 2,
+            name: "Sam Larry",
+            title: "sent you an Ajo invitation",
+            slots: 7,
+            amount: "20,000",
+            goal: "100,000",
+            cycles: 5,
+            time: "5 min ago",
+            status: "completed"
+        },
+        {
+            id: 3,
+            name: "Mike Abdul",
+            title: "sent you an Ajo invitation",
+            slots: 9,
+            amount: "40,000",
+            goal: "200,000",
+            cycles: 4,
+            time: "10 min ago",
+            status: "pending"
+        },
+        {
+            id: 4,
+            name: "King Moses",
+            title: "sent you an Ajo invitation",
+            slots: 3,
+            amount: "100,000",
+            goal: "300,000",
+            cycles: 16,
+            time: "15 min ago",
+            status: "completed"
+        }
+
+    ]
+
     const renderItem = ({ item }) => {
         if (item.type === 'header') {
             return (
@@ -106,15 +154,16 @@ const Ajo = () => {
             return <ActiveTab sections={sections} />;
         }
         if (activeTab === 'Pending') {
-            return <PendingTab />;
+            return <PendingTab invitationData={invitationData} />;
         }
         if (activeTab === 'Completed') {
-            return <CompletedTab />;
+            return <CompletedTab invitationData={invitationData} />;
         }
         return null;
     };
 
     const dataToRender = activeTab === 'All' ? sections : [];
+    const cards = invitationData.filter(item => item.status === 'pending');
 
     return (
         <SafeAreaView className="flex-1 bg-[#F9F9F9]">
@@ -126,7 +175,6 @@ const Ajo = () => {
                     </Text>
                 </View>
 
-
                 <View className="px-[5%] mb-8">
                     <View className="flex-row bg-[#EBEBF0] p-1 rounded-[20px]">
                         {tabs.map((tab) => (
@@ -135,11 +183,20 @@ const Ajo = () => {
                                 onPress={() => setActiveTab(tab)}
                                 className={`flex-1 py-2 rounded-[16px] items-center justify-center ${activeTab === tab ? 'bg-[#F2F3FF] border-2 border-white' : ''}`}
                             >
-                                <Text className={`text-[14px] font-familjen-semibold ${activeTab === tab ? 'text-[#240046]' : 'text-[#8E8E93]'}`}>
-                                    {tab}
-                                </Text>
+                                <View>
+                                    {tab === "Pending" && cards.length > 0 && (
+                                        <View className="bg-[#F0931B] rounded-full w-5 h-5 flex items-center justify-center absolute -top-5 -right-7">
+                                            <Text className="text-[10px] text-white font-inter-medium">{cards.length}</Text>
+                                        </View>
+                                    )}
+                                    <Text className={`text-[14px] font-familjen-semibold ${activeTab === tab ? 'text-[#240046]' : 'text-[#8E8E93]'}`}>
+                                        {tab}
+                                    </Text>
+                                </View>
                             </TouchableOpacity>
-                        ))}
+
+                        )
+                        )}
                     </View>
                 </View>
 
@@ -158,13 +215,14 @@ const Ajo = () => {
                 )}
 
                 {loading ? <ActivityIndicator color="#000000" /> :
+
                     <Ajos
                         data={dataToRender}
                         item={renderItem}
                         listFooter={ListFooter}
                     />
-                }
 
+                }
             </View>
         </SafeAreaView>
     )

@@ -162,7 +162,7 @@ const DashLayout = () => {
                 />
 
                 <Tabs.Screen
-                    name="pages/statistics"
+                    name="pages/wallet/statistics"
                     options={{
                         href: null,
                         tabBarStyle: { display: 'none' }

@@ -148,7 +148,7 @@ const Wallet = () => {
                         <View className="items-center gap-2">
                             <TouchableOpacity
                                 className="w-20 h-20 rounded-full bg-white border-2 border-[#F9F9F9] items-center justify-center"
-                                onPress={() => router.push("pages/statistics")}
+                                onPress={() => router.push("pages/wallet/statistics")}
                             >
                                 <Ionicons name="bar-chart-outline" size={24} color="#292D32" />
                             </TouchableOpacity>
