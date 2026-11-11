@@ -2,12 +2,20 @@ import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import Logo from "@/assets/images/slogo.svg"
+import { router } from 'expo-router';
 
 const Unread = ({ notifications }) => {
 
     const renderSection = (sectionTitle) => {
         const sectionItems = notifications.filter((item) => item.section === sectionTitle);
         if (sectionItems.length === 0) return null;
+
+        const viewDetails = (item) => {
+            router.push({
+                pathname: "pages/notification/NotificationDetails",
+                params: { itemData: JSON.stringify(item) }
+            });
+        }
 
         return (
             <View key={sectionTitle} className="mb-6">
@@ -41,6 +49,7 @@ const Unread = ({ notifications }) => {
                             <TouchableOpacity
                                 activeOpacity={0.8}
                                 className="bg-[#F2F3FF] px-4 py-1.5 rounded-full flex-row items-center border border-[#D9D9D9]"
+                                onPress={() => viewDetails(item)}
                             >
                                 <Text className="text-[#1E125C] font-poppins-medium text-[11.2px] mr-1">View</Text>
                                 <Ionicons name="chevron-forward" size={12} color="#1e1b4b" />

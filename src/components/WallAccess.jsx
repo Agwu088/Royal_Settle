@@ -2,7 +2,7 @@ import { View, Text } from 'react-native';
 import React from 'react';
 import Wallet from "@/assets/images/wallet.svg";
 import Eye from "@/assets/images/eye.svg";
-import Lock from "@/assets/images/lock.svg";
+import Padlock from "@/assets/images/padlock.svg";
 import Copy from "@/assets/images/copy.svg";
 
 export default function WallAccess() {
@@ -14,7 +14,7 @@ export default function WallAccess() {
             </View>
             <View className="flex-row justify-center items-center gap-3 bg-[#FFF] border-2 border-[#ECECEC] px-[3%] py-[4px] rounded-[50px]">
                 <Eye width={30} height={30} />
-                <Lock width={30} height={30} />
+                <Padlock width={30} height={30} />
                 <Copy width={30} height={30} />
             </View>
         </View>

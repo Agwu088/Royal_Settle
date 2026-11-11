@@ -1,10 +1,10 @@
 import { Text, View, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Entypo } from '@expo/vector-icons';
-import Unread from '@/components/notification/Unread';
-import All from '@/components/notification/All';
+import Unread from '@/app/pages/notification/Unread';
+import All from '@/app/pages/notification/All';
 import { useRouter } from 'expo-router';
+import NotificationHeader from '@/components/notification/NotificationHeader';
 
 
 const Notification = () => {
@@ -20,6 +20,7 @@ const Notification = () => {
             message: 'Your KYC status has been upgraded to tier 4 successfully. You can now proceed to create and...',
             time: '12:10 PM',
             isUnread: true,
+            status: "approved"
         },
         {
             id: '2',
@@ -28,6 +29,7 @@ const Notification = () => {
             message: "We couldn't verify your NIN because the document was blurry. Please try again for a faster verification...",
             time: '10:02 AM',
             isUnread: false,
+            status: "denied"
         },
         {
             id: '3',
@@ -36,22 +38,14 @@ const Notification = () => {
             message: 'We are currently reviewing your documents to ensure everything is in order. This typically takes...',
             time: '07:55 am',
             isUnread: false,
+            status: "pending"
         },
     ];
 
     return (
         <SafeAreaView className="flex-1 bg-[#F5F5F5]" edges={['top']}>
             <View className="px-[5%]">
-                <View className="flex-row items-center mt-4 mb-6 gap-[25%]">
-                    <TouchableOpacity
-                        className="w-12 h-12 rounded-full border border-gray-200 items-center justify-center"
-                        onPress={() => router.back()}
-                    >
-                        <Entypo name="chevron-small-left" size={24} color="#141414" />
-                    </TouchableOpacity>
-
-                    <Text className="text-[24px] font-familjen-semibold text-center text-[#000] leading-tight">Notification</Text>
-                </View>
+                <NotificationHeader />
 
                 <View className="flex-row items-center bg-[#E8E8E8] p-1.5 rounded-full w-full m-auto">
                     {/* Unread Tab */}
