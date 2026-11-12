@@ -7,9 +7,10 @@ import Add from "@/assets/images/add-circle.svg";
 import Invite from "@/assets/images/invite.svg";
 import Ajos from '@/components/Ajos';
 import { CommunityCard } from '@/components/communityCard';
+import CommunityAjoSkeleton from '@/utils/communityAjoSkeleton';
 
 
-export const ActiveTab = ({ sections }) => {
+export const ActiveTab = ({ sections, tab }) => {
 
     const [loading, setLoading] = useState(true);
 
@@ -61,7 +62,7 @@ export const ActiveTab = ({ sections }) => {
                 </TouchableOpacity>
             </View>
 
-            {loading ? <ActivityIndicator color="#000000" />
+            {loading ? <CommunityAjoSkeleton tab={tab} />
                 : cards.length !== 0
                     ?
                     <Ajos

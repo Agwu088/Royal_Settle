@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -7,6 +7,7 @@ import { ActiveTab } from '@/app/pages/ajo/ActiveTab';
 import { PendingTab } from '@/app/pages/ajo/PendingTab';
 import { CompletedTab } from '@/app/pages/ajo/CompletedTab';
 import Ajos from '@/components/Ajos';
+import CommunityAjoSkeleton from '@/utils/communityAjoSkeleton';
 
 const Ajo = () => {
     const [activeTab, setActiveTab] = useState('All');
@@ -151,13 +152,13 @@ const Ajo = () => {
 
     const ListFooter = () => {
         if (activeTab === 'Active') {
-            return <ActiveTab sections={sections} />;
+            return <ActiveTab sections={sections} tab={activeTab} />;
         }
         if (activeTab === 'Pending') {
-            return <PendingTab invitationData={invitationData} />;
+            return <PendingTab invitationData={invitationData} tab={activeTab} />;
         }
         if (activeTab === 'Completed') {
-            return <CompletedTab invitationData={invitationData} />;
+            return <CompletedTab invitationData={invitationData} tab={activeTab} />;
         }
         return null;
     };
@@ -214,7 +215,7 @@ const Ajo = () => {
                     </View>
                 )}
 
-                {loading ? <ActivityIndicator color="#000000" /> :
+                {loading ? <CommunityAjoSkeleton /> :
 
                     <Ajos
                         data={dataToRender}

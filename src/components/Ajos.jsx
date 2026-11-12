@@ -2,6 +2,7 @@ import { View, FlatList } from 'react-native';
 import React from 'react';
 
 export default function Ajos({ data, item, listFooter, padBottom }) {
+
     return (
         <View>
             <FlatList
