@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Logo from "@/assets/images/slogo.svg"
 import { router } from 'expo-router';
 
-const Unread = ({ notifications }) => {
+const Unread = ({ tab, notifications }) => {
 
     const renderSection = (sectionTitle) => {
         const sectionItems = notifications.filter((item) => item.section === sectionTitle);
@@ -18,8 +18,10 @@ const Unread = ({ notifications }) => {
         }
 
         return (
-            <View key={sectionTitle} className="mb-6">
-                <Text className="text-[14px] font-familjen-semibold text-[#141414] mb-3 px-1">{sectionTitle}</Text>
+            <View className={tab === "Unread" ? "mb-6" : ""}>
+                {
+                    tab === "Unread" && (<Text className="text-[14px] font-familjen-semibold text-[#141414] mb-3 px-1">{sectionTitle}</Text>)
+                }
                 {sectionItems.map((item) => (
                     <View
                         key={item.id}

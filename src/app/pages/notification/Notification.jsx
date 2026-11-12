@@ -2,7 +2,6 @@ import { Text, View, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Unread from '@/app/pages/notification/Unread';
-import All from '@/app/pages/notification/All';
 import { useRouter } from 'expo-router';
 import NotificationHeader from '@/components/notification/NotificationHeader';
 
@@ -64,11 +63,10 @@ const Notification = () => {
                 </View>
             </View>
             <View className="bg-white flex-1 mt-[6%] px-[3%] py-[5%]">
-                {activeTab === "Unread" ?
-                    (<Unread notifications={notifications} />)
-                    :
-                    (<All notifications={notifications} />)
-                }
+                <Unread
+                    tab={activeTab}
+                    notifications={notifications}
+                />
             </View>
         </SafeAreaView>
     )
