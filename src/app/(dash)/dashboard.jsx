@@ -1,4 +1,4 @@
-import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, Image, TouchableOpacity, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Entypo, MaterialCommunityIcons, Feather } from '@expo/vector-icons';
 import { getAllAjo } from '@/store/slices/ajoSlice';
@@ -113,10 +113,10 @@ const Dashboard = () => {
     const renderHeader = () => (
         <View className="px-[3%]">
             <View className="flex-row items-center justify-between mt-[3%] pb-[2%] border-b border-[#ECECEC]">
-                <View className="flex-row items-center justify-between gap-3">
+                <Pressable onPress={() => router.push("pages/loan/Loan")} className="flex-row items-center justify-between gap-3">
                     <Profile width={50} height={50} />
                     <Text className="text-[20px] font-inter-medium text-[#000]">Hi, { }</Text>
-                </View>
+                </Pressable>
                 <TouchableOpacity onPress={() => router.push('pages/notification/Notification')} className="bg-[#F4F4FB] border-2 border-[#ECECEC] p-[3%] rounded-[50px]">
                     <View className="bg-red-500 rounded-full w-5 h-5 flex items-center justify-center absolute -top-2 right-0">
                         <Text className="text-[10px] text-white font-inter-medium">6</Text>

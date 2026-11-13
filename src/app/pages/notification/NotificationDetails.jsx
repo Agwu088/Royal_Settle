@@ -2,7 +2,7 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { useLocalSearchParams } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import NotificationHeader from '@/components/notification/NotificationHeader';
+import NotificationHeader from '@/components/NavigationHeader';
 import Pending from "@/assets/images/pending.svg";
 import Approved from "@/assets/images/approved.svg";
 import Denied from "@/assets/images/denied.svg";

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Unread from '@/app/pages/notification/Unread';
 import { useRouter } from 'expo-router';
-import NotificationHeader from '@/components/notification/NotificationHeader';
+import NavigationHeader from '@/components/NavigationHeader';
 
 
 const Notification = () => {
@@ -44,7 +44,7 @@ const Notification = () => {
     return (
         <SafeAreaView className="flex-1 bg-[#F5F5F5]" edges={['top']}>
             <View className="px-[5%]">
-                <NotificationHeader />
+                <NavigationHeader title={"Notification"} />
 
                 <View className="flex-row items-center bg-[#E8E8E8] p-1.5 rounded-full w-full m-auto">
                     {/* Unread Tab */}
