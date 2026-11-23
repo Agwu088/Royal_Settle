@@ -16,23 +16,21 @@ export default function NotActive({ btnAction, title, subTitle, status, msg, btn
             }
 
             {/* Empty State */}
-            <View className="items-center justify-center flex-1 mt-10">
+            <View className="items-center justify-center mt-10">
                 <Icon1 width={120} height={120} />
                 <Text className="text-[16px] font-familjen-semibold text-[#000] mt-[10%] mb-2">{status}</Text>
                 <Text className="text-[12px] text-[#666] font-inter-medium">{msg}</Text>
             </View>
 
             {/* Floating Action Button */}
-            <View className="flex-row justify-end">
-                <View className="w-[50%]">
-                    <TouchableOpacity
-                        className="flex-row items-center bg-[#F2F3FF] px-5 py-3 rounded-[24px] shadow-sm gap-2 border-2 border-white"
-                        onPress={btnAction}
-                    >
-                        <Icon2 width={30} height={30} />
-                        <Text className="text-[#240046] text-[14px] font-poppins-semibold">{btnTitle}</Text>
-                    </TouchableOpacity>
-                </View>
+            <View className="flex-row justify-end mt-[55%]">
+                <TouchableOpacity
+                    className="flex-row items-center bg-[#F2F3FF] px-5 py-3 rounded-[24px] shadow-sm gap-2 border-2 border-white"
+                    onPress={btnAction}
+                >
+                    <Icon2 width={30} height={30} />
+                    <Text className="text-[#240046] text-[14px] font-poppins-semibold">{btnTitle}</Text>
+                </TouchableOpacity>
             </View>
         </View>
     )

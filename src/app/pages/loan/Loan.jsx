@@ -1,87 +1,59 @@
-import { Text, TouchableOpacity, View } from 'react-native';
-import React from 'react';
+import { Text, View, TouchableOpacity } from 'react-native';
+import { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import NavigationHeader from '@/components/NavigationHeader';
-import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
+import Add from "@/assets/images/add-circle.svg";
+import Cash from "@/assets/images/cash.svg";
+import { useRouter } from 'expo-router';
 
 const Loan = () => {
+    const [activeTab, setActiveTab] = useState('Loan History');
+    const tabs = ['Loan History', 'Repayment History'];
+    const router = useRouter();
+
     return (
-        <SafeAreaView className="flex-1" edges={['top']}>
+        <SafeAreaView className="flex-1 px-[10%]">
             <View className="px-[3%]">
-                <NavigationHeader title={"Get Loan"} />
+                <NavigationHeader title={"Loan"} gap={"gap"} />
+            </View>
+            <View className="flex-row items-center bg-[#E8E8E8] p-1.5 rounded-full w-full m-auto">
+                {/* Unread Tab */}
+                {tabs.map((tab) => (
+                    <TouchableOpacity
+                        activeOpacity={0.9}
+                        key={tab}
+                        onPress={() => setActiveTab(tab)}
+                        className={`flex-1 py-3 rounded-full items-center justify-center ${activeTab === tab ? 'bg-[#F2F3FF] border-2 border-white' : 'bg-transparent'}`}
+                    >
+                        <Text className={`font-familjen-semibold text-base ${activeTab === tab ? 'text-[#240046]' : 'text-gray-500'}`}>
+                            {tab}
+                        </Text>
+                    </TouchableOpacity>
+                ))}
             </View>
 
-            <View className="px-[3%] py-[5%] bg-white flex-1">
-                <Text className="font-familjen-semibold text-[16px]">Loan Amount (<MaterialCommunityIcons name="currency-ngn" size={15} color="black" />)</Text>
-                <Text className="font-familjen-semibold text-[44px]">50,000</Text>
-                <View className="mt-[5%] flex-row justify-between items-center">
-                    <Text className="font-familjen text-[10px] text-[#807C8D]">Max loan amount 100,000</Text>
-                    <TouchableOpacity className="bg-[#240046] px-[40px] py-[10px] rounded-full">
-                        <Text className="text-white text-center font-familjen-bold text-[7.65px]">Take All</Text>
+            <View className="px-[3%] py-[5%] bg-white flex-1 mt-[5%] rounded-[24px]">
+                <View className="mb-12">
+                    <Text className="text-[16px] font-familjen-semibold text-[#000] mb-1">Apply for a loan</Text>
+                    <Text className="text-[11px] text-[#666] font-inter-medium">Get loan as swiftly as possible</Text>
+                </View>
+
+                <View className="items-center justify-center mt-20">
+                    <Cash width={120} height={120} />
+                    <Text className="text-[16px] font-familjen-semibold text-[#000] mt-[8%] mb-2">No active loan</Text>
+                    <Text className="text-[12px] text-[#666] font-inter-medium">All your active loans will appear here</Text>
+                </View>
+
+                {/* Floating Action Button */}
+                <View className="flex-row justify-end mt-[55%]">
+                    <TouchableOpacity
+                        className="flex-row items-center bg-[#F2F3FF] px-5 py-3 rounded-[24px] shadow-sm gap-2 border-2 border-white"
+                        onPress={() => router.push("pages/loan/GetLoan")}
+                    >
+                        <Add width={30} height={30} />
+                        <Text className="text-[#240046] text-[14px] font-poppins-semibold">Get Loan</Text>
                     </TouchableOpacity>
                 </View>
-
-                <View className="h-[3px] bg-gray-100 w-full my-3" />
-
-                <View className="w-full bg-white rounded-3xl border border-gray-100 p-6 mt-[3%]">
-                    {/* Row 1: Loan Tenure */}
-                    <View className="flex-row justify-between items-start py-3 border-b border-gray-50">
-                        <Text className="text-[#636A67] text-[10px] font-familjen">Loan Tenure</Text>
-                        <TouchableOpacity className="items-end">
-                            <View className="flex-row items-center">
-                                <Text className="text-[#141414] font-familjen-semibold text-[14px] mr-1">
-                                    120 Days (4 months)
-                                </Text>
-                                <Text className="text-purple-900 font-bold">›</Text>
-                            </View>
-                            <Text className="text-[#636A67] font-familjen text-[12px] mt-0.5">
-                                Monthly Interest 20.4%
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-
-                    {/* Row 2: Interest */}
-                    <View className="flex-row justify-between items-center py-4 border-b border-gray-50">
-                        <Text className="text-[#636A67] text-[10px] font-familjen">Interest</Text>
-                        <Text className="text-[#141414] font-familjen-semibold text-[14px]">₦9,780</Text>
-                    </View>
-
-                    {/* Row 3: Repayment Plan */}
-                    <View className="flex-row justify-between items-start py-4 border-b border-gray-50">
-                        <Text className="text-[#636A67] text-[10px] font-familjen">Repayment Plan</Text>
-                        <TouchableOpacity className="items-end">
-                            <View className="flex-row items-center">
-                                <Text className="text-[#141414] font-familjen-semibold text-[14px] mr-1">
-                                    Total ₦59,780
-                                </Text>
-                                <Text className="text-purple-900 font-bold">›</Text>
-                            </View>
-                            <Text className="text-[#636A67] font-familjen text-[12px] mt-0.5">
-                                1st Repay Date <Text className="text-blue-900">10 Nov 2026</Text>, Amount 5,445
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-
-                    {/* Row 4: Disbursement Account */}
-                    <View className="flex-row justify-between items-center pt-4">
-                        <Text className="text-[#636A67] text-[10px] font-familjen">Disbursement Account</Text>
-                        <TouchableOpacity className="flex-row items-center">
-                            <Text className="text-[#141414] font-familjen-semibold text-[14px]">*****</Text>
-                            <Text className="text-[#141414] font-familjen-semibold text-[14px] mr-1">2621</Text>
-                            <Text className="text-purple-900 font-bold">›</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-                <View className="gap-6 mt-[5%]">
-                    <Text className="font-familjen text-[10px] text-[#636A67]">This loan will be used for <Text className="text-blue-900">Daily consumption</Text></Text>
-                    <Text className="font-familjen text-[10px] text-[#636A67]">It is important that you must repay your loan as at when due to maintain a good credit report and avoid rollover fee of 1% daily. <Text className="text-blue-900">Click to know more</Text></Text>
-                    <Text className="font-familjen text-[10px] text-[#636A67]">This loan will be used for Daily consumption</Text>
-                </View>
-                <TouchableOpacity className={`bg-[#240046] py-[18px] rounded-full relative top-[23%]`}>
-                    <Text className="text-white text-[16px] font-familjen-bold text-center">
-                        Apply Now
-                    </Text>
-                </TouchableOpacity>
             </View>
         </SafeAreaView>
     )
