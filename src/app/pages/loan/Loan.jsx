@@ -22,32 +22,19 @@ const Loan = () => {
     }, [])
 
     const loanData = [
-        {
-            id: 1,
-            amt: "100,000",
-            date: "10 Dec 2026"
-        },
-        {
-            id: 2,
-            amt: "300,000",
-            date: "10 Oct 2026"
-        },
-        {
-            id: 3,
-            amt: "150,000",
-            date: "04 Sept 2026"
-        },
-        {
-            id: 4,
-            amt: "500,000",
-            date: "18 July 2026"
-        },
-        {
-            id: 5,
-            amt: "720,000",
-            date: "14 May 2026"
-        },
+        { id: 1, amt: "100,000", date: "10 Dec 2026" },
+        { id: 2, amt: "300,000", date: "10 Oct 2026" },
+        { id: 3, amt: "150,000", date: "04 Sept 2026" },
+        { id: 4, amt: "500,000", date: "18 July 2026" },
+        { id: 5, amt: "720,000", date: "14 May 2026" },
     ]
+
+    const repaymentData = [
+        { id: 1, amt: '100,000', date: '10 Oct 2026' },
+        { id: 2, amt: '100,000', date: '10 Oct 2026' },
+        { id: 3, amt: '100,000', date: '10 Oct 2026' },
+        { id: 4, amt: '100,000', date: '10 Oct 2026' },
+    ];
 
 
 
@@ -78,7 +65,7 @@ const Loan = () => {
                 </View>
                 : loanData.length !== 0
                     ?
-                    <LoanCards data={loanData} />
+                    <LoanCards data={activeTab === "Loan History" ? loanData : repaymentData} tab={activeTab} />
                     :
                     <View className="flex-1 px-[3%] py-[5%] bg-white mt-[5%] rounded-[24px]">
                         <View className="mb-12">
