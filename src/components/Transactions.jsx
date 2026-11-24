@@ -1,4 +1,4 @@
-import { View, Image, Text, FlatList } from 'react-native'
+import { View, Text, FlatList } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons';
 
 const Transactions = ({ transactions }) => {
