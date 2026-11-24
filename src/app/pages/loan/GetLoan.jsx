@@ -1,15 +1,35 @@
 import { Text, TouchableOpacity, View, TextInput, Pressable } from 'react-native';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import NavigationHeader from '@/components/NavigationHeader';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import KeyPad from '@/utils/keyPad';
+import TenureBottomSheet, { DEFAULT_TENURES } from '@/utils/bottomSheet/TenureBottomSheet';
+import RepaymentScheduleBottomSheet from '@/utils/bottomSheet/RepaymentScheduleBottomSheet';
+import AccountSelectBottomSheet from '@/utils/bottomSheet/AccountSelectBottomSheet';
 
-const Loan = () => {
+const GetLoan = () => {
     const [loanAmount, setLoanAmount] = useState('50,000');
     const [isKeypadVisible, setIsKeypadVisible] = useState(false);
 
-    console.log(isKeypadVisible)
+    const MOCK_SCHEDULE = [
+        { id: '1', date: '04 Nov 2026', label: '1st Installment', amount: '55,556' },
+        { id: '2', date: '04 Dec 2026', label: '2nd Installment', amount: '55,556' },
+        { id: '3', date: '04 Jan 2027', label: '3rd Installment', amount: '55,556' },
+        { id: '4', date: '04 Feb 2027', label: '4th Installment', amount: '55,556' },
+    ];
+
+    const MOCK_ACCOUNTS = [
+        { id: 'a1', bankName: 'OPay', maskedNumber: '******2421' },
+        { id: 'a2', bankName: 'OPay', maskedNumber: '******2421' },
+    ];
+
+    const tenureSheetRef = useRef(null);
+    const scheduleSheetRef = useRef(null);
+    const accountSheetRef = useRef(null);
+
+    const [selectedTenure, setSelectedTenure] = useState(DEFAULT_TENURES[2]);
+    const [selectedAccount, setSelectedAccount] = useState(MOCK_ACCOUNTS[0]);
 
     return (
         <SafeAreaView className="flex-1" edges={['top']}>
@@ -50,7 +70,9 @@ const Loan = () => {
 
                                 <View className="flex-row justify-between items-start py-3 border-b border-gray-50">
                                     <Text className="text-[#636A67] text-[10px] font-familjen">Loan Tenure</Text>
-                                    <TouchableOpacity className="items-end">
+                                    <TouchableOpacity
+                                        onPress={() => tenureSheetRef.current?.present()}
+                                        className="items-end">
                                         <View className="flex-row items-center">
                                             <Text className="text-[#141414] font-familjen-semibold text-[14px] mr-1">
                                                 120 Days (4 months)
@@ -72,7 +94,9 @@ const Loan = () => {
                                 {/* Row 3: Repayment Plan */}
                                 <View className="flex-row justify-between items-start py-4 border-b border-gray-50">
                                     <Text className="text-[#636A67] text-[10px] font-familjen">Repayment Plan</Text>
-                                    <TouchableOpacity className="items-end">
+                                    <TouchableOpacity
+                                        onPress={() => scheduleSheetRef.current?.present()}
+                                        className="items-end">
                                         <View className="flex-row items-center">
                                             <Text className="text-[#141414] font-familjen-semibold text-[14px] mr-1">
                                                 Total ₦59,780
@@ -88,7 +112,9 @@ const Loan = () => {
                                 {/* Row 4: Disbursement Account */}
                                 <View className="flex-row justify-between items-center pt-4">
                                     <Text className="text-[#636A67] text-[10px] font-familjen">Disbursement Account</Text>
-                                    <TouchableOpacity className="flex-row items-center">
+                                    <TouchableOpacity
+                                        onPress={() => accountSheetRef.current?.present()}
+                                        className="flex-row items-center">
                                         <Text className="text-[#141414] font-familjen-semibold text-[14px]">*****</Text>
                                         <Text className="text-[#141414] font-familjen-semibold text-[14px] mr-1">2621</Text>
                                         <Text className="text-purple-900 font-bold">›</Text>
@@ -116,8 +142,32 @@ const Loan = () => {
                     )}
                 </View>
             </View>
+            {/* Bottom Sheets */}
+            <TenureBottomSheet
+                ref={tenureSheetRef}
+                selectedId={selectedTenure.id}
+                onSelect={setSelectedTenure}
+                onClose={() => tenureSheetRef.current?.dismiss()}
+            />
+
+            <RepaymentScheduleBottomSheet
+                ref={scheduleSheetRef}
+                installmentsCount={4}
+                repayPerPeriod="55,556"
+                schedule={MOCK_SCHEDULE}
+                onClose={() => scheduleSheetRef.current?.dismiss()}
+            />
+
+            <AccountSelectBottomSheet
+                ref={accountSheetRef}
+                accounts={MOCK_ACCOUNTS}
+                selectedAccountId={selectedAccount.id}
+                onSelectAccount={setSelectedAccount}
+                onAddNewAccount={() => navigation?.navigate('AddAccount')}
+                onClose={() => accountSheetRef.current?.dismiss()}
+            />
         </SafeAreaView>
     )
 }
 
-export default Loan;
+export default GetLoan;

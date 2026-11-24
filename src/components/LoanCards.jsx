@@ -32,7 +32,6 @@ const LoanCards = ({ data, tab }) => {
                                     ) :
                                         (<View></View>)
                                 }
-
                             </View>
                         </View>
                     );
