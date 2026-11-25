@@ -1,9 +1,19 @@
-import { View, FlatList, Text, TouchableOpacity } from 'react-native';
+import { View, FlatList, Text, TouchableOpacity, Pressable } from 'react-native';
 import React from 'react';
 import DetsArr from "@/assets/images/detsArrow";
+import { router } from 'expo-router';
 
 
 const LoanCards = ({ data, tab }) => {
+
+    const viewDetails = (item) => {
+        console.log("Click is working")
+        router.push({
+            pathname: "pages/loan/LoanDetails",
+            params: { itemData: JSON.stringify(item) }
+        });
+    }
+
     return (
         <View className="flex-1 px-[3%] py-[5%] bg-white mt-[5%]">
             <FlatList
@@ -16,10 +26,10 @@ const LoanCards = ({ data, tab }) => {
                         <View className="w-[100%] border border-[#ECECEC] bg-white px-4 py-[5%] rounded-[20px] mb-5">
                             <View className="flex-row w-full items-center justify-between">
                                 <Text className="text-[12px] font-familjen text-[#636A67]">{tab === "Loan History" ? "Due Amount" : "Repayment Amount"}</Text>
-                                <View className="flex-row items-center gap-2">
+                                <Pressable onPress={() => viewDetails(item)} className="flex-row items-center gap-2">
                                     <Text className="font-familjen-semibold text-[14px]">Details</Text>
                                     <DetsArr width={8} height={8} />
-                                </View>
+                                </Pressable>
                             </View>
                             <Text className="font-familjen-bold text-[16px] my-3">N{item.amt}</Text>
                             <View className="flex-row items-end justify-between">

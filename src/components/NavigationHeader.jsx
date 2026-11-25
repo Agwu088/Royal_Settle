@@ -6,7 +6,7 @@ import { useRouter } from 'expo-router';
 const NavigationHeader = ({ title, gap }) => {
     const router = useRouter();
     return (
-        <View className={`flex-row items-center mt-4 mb-6 ${gap ? "gap-[32%]" : "gap-[25%]"}`}>
+        <View className={`flex-row items-center mt-4 mb-6`} style={{ gap }}>
             <TouchableOpacity
                 className="w-12 h-12 rounded-full border border-gray-200 items-center justify-center"
                 onPress={() => router.back()}

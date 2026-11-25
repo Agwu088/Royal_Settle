@@ -1,6 +1,5 @@
 import { Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import { useLocalSearchParams } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import NotificationHeader from '@/components/NavigationHeader';
 import Pending from "@/assets/images/pending.svg";
@@ -11,7 +10,7 @@ import Lock from "@/assets/images/lock.svg";
 import Email from "@/assets/images/email.svg";
 import Glob from "@/assets/images/glob.svg";
 import Check from "@/assets/images/check.svg";
-import { useRouter } from 'expo-router';
+import { useRouter, useLocalSearchParams } from 'expo-router';
 
 
 const NotificationDetails = () => {

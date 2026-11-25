@@ -5,7 +5,7 @@ import NavigationHeader from '@/components/NavigationHeader';
 import Add from "@/assets/images/add-circle.svg";
 import Cash from "@/assets/images/cash.svg";
 import { useRouter } from 'expo-router';
-import LoanCards from '@/components/LoanCards';
+import LoanCards from '@/components/loan/LoanCards';
 
 const Loan = () => {
     const [activeTab, setActiveTab] = useState('Loan History');
@@ -41,7 +41,7 @@ const Loan = () => {
     return (
         <SafeAreaView edges={loanData.length === 0 ? ['top', 'bottom'] : ['top']} className={`flex-1 ${loanData.length === 0 ? "px-[10%]" : "px-[0%]"}`}>
             <View className="px-[3%]">
-                <NavigationHeader title={"Loan"} gap={"gap"} />
+                <NavigationHeader title={"Loan"} gap={128} />
             </View>
             <View className={`flex-row items-center bg-[#E8E8E8] p-1.5 rounded-full ${loanData.length === 0 ? " w-[95%] m-auto " : " w-[90%] m-auto"}`}>
                 {/* Unread Tab */}

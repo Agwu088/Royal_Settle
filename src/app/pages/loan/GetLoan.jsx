@@ -34,7 +34,7 @@ const GetLoan = () => {
     return (
         <SafeAreaView className="flex-1" edges={['top']}>
             <View className="px-[3%]">
-                <NavigationHeader title={"Get Loan"} />
+                <NavigationHeader title={"Get Loan"} gap={110} />
             </View>
 
             <View className="px-[3%] pt-[5%] pb-[10%] bg-white flex-1">
