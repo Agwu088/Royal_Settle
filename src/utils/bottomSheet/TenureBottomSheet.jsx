@@ -12,60 +12,51 @@ export const DEFAULT_TENURES = [
     { id: '30', label: '30 Days (1 month)', interest: '24%' },
 ];
 
-const TenureBottomSheet = forwardRef(
-    ({ tenures = DEFAULT_TENURES, selectedId, onSelect, onBack, onClose }, ref) => {
-        return (
-            <LoanSheetWrapper
-                ref={ref}
-                title="Choose a Tenure"
-                snapPoints={['65%']}
-                onBack={onBack}
-                onClose={onClose}
+const TenureBottomSheet = forwardRef(({ tenures = DEFAULT_TENURES, selectedId, onSelect, onBack, onClose }, ref) => {
+    return (
+        <LoanSheetWrapper
+            ref={ref}
+            title="Choose a Tenure"
+            snapPoints={['48%']}
+            onBack={onBack}
+            onClose={onClose}
+        >
+            <BottomSheetScrollView
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={{ gap: 10 }}
             >
-                <BottomSheetScrollView
-                    showsVerticalScrollIndicator={false}
-                    contentContainerStyle={{ gap: 10, paddingBottom: 16 }}
-                >
-                    {tenures.map((item) => {
-                        const isSelected = item.id === selectedId;
+                {tenures.map((item) => {
+                    const isSelected = item.id === selectedId;
 
-                        return (
-                            <Pressable
-                                key={item.id}
-                                onPress={() => {
-                                    onSelect(item);
-                                    onClose?.();
-                                }}
-                                className={`flex-row items-center justify-between px-4 py-3.5 rounded-2xl border ${isSelected
-                                    ? 'border-[#280A48] bg-[#FAF8FC]'
-                                    : 'border-gray-100 bg-white'
-                                    }`}
-                            >
-                                <View className="flex-row items-center flex-wrap flex-1 pr-2">
-                                    <Text className="text-xs font-semibold text-gray-900">
-                                        {item.label}
-                                    </Text>
-                                    <Text className="text-xs text-gray-400 ml-2">
-                                        Monthly interest {item.interest}
-                                    </Text>
-                                </View>
+                    return (
+                        <Pressable
+                            key={item.id}
+                            onPress={() => {
+                                onSelect(item);
+                                onClose?.();
+                            }}
+                            className={`flex-row items-center justify-between px-4 py-3.5 rounded-2xl border border-gray-100`}>
+                            <View className="flex-row items-center flex-wrap flex-1 pr-2">
+                                <Text className="text-[14px] font-familjen-bold text-gray-900">
+                                    {item.label}
+                                </Text>
+                                <Text className="text-[13px] font-familjen text-[#807C8D] ml-2">
+                                    Monthly interest {item.interest}
+                                </Text>
+                            </View>
 
-                                {/* Radio Indicator */}
-                                <View
-                                    className={`w-5 h-5 rounded-full border items-center justify-center ${isSelected ? 'border-emerald-500' : 'border-gray-300'
-                                        }`}
-                                >
-                                    {isSelected && (
-                                        <View className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-                                    )}
-                                </View>
-                            </Pressable>
-                        );
-                    })}
-                </BottomSheetScrollView>
-            </LoanSheetWrapper>
-        );
-    }
-);
+                            {/* Radio Indicator */}
+                            <View className={`w-5 h-5 rounded-full border items-center justify-center ${isSelected ? 'border-emerald-500' : 'border-gray-300'}`}>
+                                {isSelected && (
+                                    <View className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                                )}
+                            </View>
+                        </Pressable>
+                    );
+                })}
+            </BottomSheetScrollView>
+        </LoanSheetWrapper>
+    );
+});
 
 export default TenureBottomSheet;

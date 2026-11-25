@@ -8,6 +8,8 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import Toast from 'react-native-toast-message';
 import RootNavigator from "@/app/rootnavigator";
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -38,9 +40,13 @@ export default function Layout() {
     }
 
     return (
-        <Provider store={store}>
-            <RootNavigator />
-            <Toast />
-        </Provider>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+            <BottomSheetModalProvider>
+                <Provider store={store}>
+                    <RootNavigator />
+                    <Toast />
+                </Provider>
+            </BottomSheetModalProvider>
+        </GestureHandlerRootView>
     );
 }
