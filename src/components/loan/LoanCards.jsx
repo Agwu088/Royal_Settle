@@ -10,7 +10,10 @@ const LoanCards = ({ data, tab }) => {
         console.log("Click is working")
         router.push({
             pathname: "pages/loan/LoanDetails",
-            params: { itemData: JSON.stringify(item) }
+            params: {
+                itemData: JSON.stringify(item),
+                activeTab: tab,
+            }
         });
     }
 
