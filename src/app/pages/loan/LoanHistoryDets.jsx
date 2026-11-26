@@ -1,8 +1,19 @@
 import { Text, View, Pressable } from 'react-native';
 import React from 'react';
 import Caution from "@/assets/images/caution.svg";
+import { useRouter } from 'expo-router';
 
-const LoanHistoryDets = () => {
+const LoanHistoryDets = ({ tab }) => {
+
+    const router = useRouter();
+
+    const makePayment = () => {
+        router.push({
+            pathname: "pages/loan/Repayment",
+            params: tab
+        })
+    }
+
     return (
         <View>
             <View className="mt-2 border border-[#ECECEC] p-4 rounded-[24px] gap-2">
@@ -78,10 +89,7 @@ const LoanHistoryDets = () => {
                 <Text className="text-[12px] font-familjen">If you fail to repay your loan on time, you will be reported to the credit bureaus and this will affect your future loan applications or job employment.</Text>
             </View>
             <Pressable
-                onPress={() => {
-                    onClose?.();
-                    onAddNewAccount?.();
-                }}
+                onPress={() => makePayment()}
                 className="w-full h-14 rounded-full bg-[#240046] items-center justify-center active:opacity-85 mt-5"
             >
                 <Text className="text-[16px] font-familjen-bold text-[#FFFFFF]">

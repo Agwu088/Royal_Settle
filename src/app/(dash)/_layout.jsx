@@ -236,6 +236,13 @@ const DashLayout = () => {
                         tabBarStyle: { display: 'none' }
                     }}
                 />
+                <Tabs.Screen
+                    name="pages/loan/Repayment"
+                    options={{
+                        href: null,
+                        tabBarStyle: { display: 'none' }
+                    }}
+                />
             </Tabs>
         </>
     )

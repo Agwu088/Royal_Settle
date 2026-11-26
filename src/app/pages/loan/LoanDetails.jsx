@@ -23,7 +23,7 @@ const LoanDetails = () => {
 
                 {
                     activeTab === "Loan History" ?
-                        <LoanHistoryDets /> :
+                        <LoanHistoryDets tab={activeTab} /> :
                         <RepaymentHistoryDets />
                 }
 

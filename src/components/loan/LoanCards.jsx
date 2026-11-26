@@ -7,7 +7,6 @@ import { router } from 'expo-router';
 const LoanCards = ({ data, tab }) => {
 
     const viewDetails = (item) => {
-        console.log("Click is working")
         router.push({
             pathname: "pages/loan/LoanDetails",
             params: {
