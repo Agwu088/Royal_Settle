@@ -159,14 +159,14 @@ const Dashboard = () => {
             <View className="mt-[7%]">
                 <View className="flex-row justify-between items-center">
                     <View className="flex-row items-center gap-2">
-                        <People width={30} height={30} />
+                        <People width={25} height={25} />
                         <Text className="text-[16px] font-familjen-semibold">Community Ajo(s)</Text>
                     </View>
                     <View className="bg-[#FFF] border border-[#ECECEC] p-[3%] rounded-[50px]">
-                        <Arrow width={17} height={17} />
+                        <Arrow width={13} height={13} />
                     </View>
                 </View>
-                <View className="mt-4">
+                <View className="mt-2">
                     <FlatList
                         data={[
                             { id: 1, amount: '165,000', goal: '500,000', cycles: 10, frequency: 'Monthly', slotsLeft: 4, progress: 0.6 },
@@ -231,7 +231,7 @@ const Dashboard = () => {
                 </View>
                 <View className="mt-[5%] gap-3">
                     {/* Private Ajo Section */}
-                    <View className="bg-[white] border-2 border-[#ECECEC] rounded-[30px] p-[5%]">
+                    <View className="bg-[white] border-2 border-[#ECECEC] rounded-[30px] p-[4%]">
                         <Text className="text-[16px] font-familjen-semibold mb-4">Private Ajo(s)</Text>
                         <View className="flex-row items-center justify-between">
                             <View className="flex-row items-center gap-3">
@@ -240,7 +240,7 @@ const Dashboard = () => {
                                 </View>
                                 <View>
                                     <Text className="text-[16px] text-[#000] font-familjen-semibold">Create or join an Ajo</Text>
-                                    <Text className="text-[12px] text-[#666] font-inter-medium mt-2">Start or join an Ajo group.</Text>
+                                    <Text className="text-[11px] text-[#666] font-inter-medium">Start or join an Ajo group.</Text>
                                 </View>
                             </View>
                             <TouchableOpacity className="bg-[#F2F3FF] px-4 py-3 rounded-[20px] flex-row items-center gap-1">
@@ -251,7 +251,7 @@ const Dashboard = () => {
                     </View>
 
                     {/* Planned Saving Section */}
-                    <View className="bg-[white] border-2 border-[#ECECEC] rounded-[30px] p-[5%]">
+                    <View className="bg-[white] border-2 border-[#ECECEC] rounded-[30px] p-[4%]">
                         <Text className="text-[16px] font-familjen-semibold mb-4">Planned saving(s)</Text>
                         <View className="flex-row items-center justify-between">
                             <View className="flex-row items-center gap-3">
@@ -260,11 +260,40 @@ const Dashboard = () => {
                                 </View>
                                 <View>
                                     <Text className="text-[14px] text-[#000] font-familjen-semibold">Create a thrift plan</Text>
-                                    <Text className="text-[12px] text-[#666] font-inter-medium mt-2">Save with a goal at your pace.</Text>
+                                    <Text className="text-[11px] text-[#666] font-inter-medium">Save with a goal at your pace.</Text>
                                 </View>
                             </View>
                             <TouchableOpacity className="bg-[#F2F3FF] px-4 py-3 rounded-[20px] flex-row items-center gap-1">
                                 <Text className="text-[#1E125C] font-familjen-medium text-[12px]">Let's go</Text>
+                                <Feather name="arrow-up-right" size={14} color="#240046" />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
+                    <View className="flex-row justify-between items-center">
+                        <View className="flex-row items-center gap-2">
+                            <People width={30} height={30} />
+                            <Text className="text-[16px] font-familjen-semibold">Instant Loan(s)</Text>
+                        </View>
+                        <View className="bg-[#FFF] border border-[#ECECEC] p-[3%] rounded-[50px]">
+                            <Arrow width={13} height={13} />
+                        </View>
+                    </View>
+
+                    {/* Loan Section */}
+                    <View className="bg-[white] border-2 border-[#ECECEC] rounded-[30px] p-4">
+                        <View className="flex-row items-center justify-between">
+                            <View className="flex-row items-center gap-3">
+                                <View className="w-12 h-12 bg-[#F4F4FB] rounded-full items-center justify-center border border-[#ECECEC]">
+                                    <Pie width={40} height={40} />
+                                </View>
+                                <View>
+                                    <Text className="text-[14px] text-[#000] font-familjen-semibold">Quick credit access</Text>
+                                    <Text className="text-[11px] text-[#666] font-inter-medium">Borrow up to N500,000 instantly.</Text>
+                                </View>
+                            </View>
+                            <TouchableOpacity className="bg-[#F2F3FF] px-4 py-3 rounded-[20px] flex-row items-center gap-1">
+                                <Text className="text-[#1E125C] font-familjen-medium text-[12px]">Apply now</Text>
                                 <Feather name="arrow-up-right" size={14} color="#240046" />
                             </TouchableOpacity>
                         </View>

@@ -8,6 +8,7 @@ import Caution from "@/assets/images/caution.svg";
 import { useLocalSearchParams } from 'expo-router';
 import DetsArr from "@/assets/images/detsArrow";
 import { useRouter } from 'expo-router';
+import { Entypo } from '@expo/vector-icons';
 
 const Repayment = () => {
     const [loanAmount, setLoanAmount] = useState('100,000');
@@ -34,6 +35,14 @@ const Repayment = () => {
 
     const [selectedTenure, setSelectedTenure] = useState(tenures[2]);
 
+    const back = () => {
+        if (repayNow === true) {
+            setRepayNow(false);
+            return;
+        }
+        router.back()
+    }
+
     const pay = () => {
         if (repayNow === false) {
             setRepayNow(true);
@@ -45,7 +54,15 @@ const Repayment = () => {
     return (
         <SafeAreaView className="flex-1" edges={['top']}>
             <View className="px-[3%]">
-                <NavigationHeader title={"Repayment"} gap={100} />
+                <View className={`flex-row items-center mt-4 mb-6 gap-[100px]`}>
+                    <TouchableOpacity
+                        className="w-12 h-12 rounded-full border border-gray-200 items-center justify-center"
+                        onPress={() => back()}
+                    >
+                        <Entypo name="chevron-small-left" size={24} color="#141414" />
+                    </TouchableOpacity>
+                    <Text className="text-[24px] font-familjen-semibold text-center text-[#000]">Repayment</Text>
+                </View>
             </View>
             <View className="px-[3%] pt-[5%] pb-[6%] bg-[#ffffff] flex-1">
                 <Text className="font-familjen-semibold text-[16px]">Repayment Amount (<MaterialCommunityIcons name="currency-ngn" size={15} color="black" />)</Text>

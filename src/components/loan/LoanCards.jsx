@@ -38,7 +38,7 @@ const LoanCards = ({ data, tab }) => {
                                 <Text className="text-[#636A67] text-[12px]">{tab === "Loan History" ? "Due Date: " : "Repayment Date: "} <Text></Text>{item.date}</Text>
                                 {
                                     tab === "Loan History" ? (
-                                        <TouchableOpacity className="bg-[#240046] px-[25px] py-3 rounded-full">
+                                        <TouchableOpacity onPress={() => router.push("pages/loan/Repayment")} className="bg-[#240046] px-[25px] py-3 rounded-full">
                                             <Text className="text-[7.65px] text-white font-familjen-bold">Repay</Text>
                                         </TouchableOpacity>
                                     ) :
